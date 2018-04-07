@@ -14,14 +14,14 @@ const fetchNews = async (url = newsUrl) => {
 };
 
 (async () => {
-    logger.info('Fetching news...');
-    const text = await fetchNews();
-    logger.info(`Result:\n${text}`);
-    const payload = { text };
-    // TODO: env variable validation
-    request({
-      uri: process.env.SLACK_WEBHOOK,
-      method: 'POST',
-      json: payload,
-    }, () => logger.info('Posted news to slack!'));
-  })();
+  logger.info('Fetching news...');
+  const text = await fetchNews();
+  logger.info(`Result:\n${text}`);
+  const payload = { text };
+  // TODO: env variable validation
+  request({
+    uri: process.env.SLACK_WEBHOOK,
+    method: 'POST',
+    json: payload,
+  }, () => logger.info('Posted news to slack!'));
+})();
